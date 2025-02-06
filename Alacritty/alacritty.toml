@@ -1,0 +1,5 @@
+shell:
+  program: /bin/bash  # or your preferred shell (e.g., /bin/zsh)
+
+Default:
+	Linux/BSD: { family = "fire code", style = _"Regular"_ }
