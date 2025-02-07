@@ -1,0 +1,17 @@
+# Define an array of shortcut paths
+$shortcuts = @(
+    "C:\Users\zacha\OneDrive\Desktop\Air.lnk",
+    "C:\Program Files\Tencent\WeChat\WeChat.lnk",
+    "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\OBS Studio\OBS Studio (64bit).lnk"
+)
+
+# Loop through each shortcut and start it in the background
+foreach ($shortcut in $shortcuts) {
+    Start-Process -FilePath $shortcut -WindowStyle Hidden
+}
+
+# Change directory to 'C:\s\IPAD\T_AL\' (assuming it's a typo and you meant 'cd')
+Set-Location 'C:\s\IPAD\T_AL\'
+
+# Execute the command 'yazi' in WSL (Windows Subsystem for Linux)
+Invoke-Expression 'wsl foot yazi'

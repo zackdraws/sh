@@ -1,0 +1,20 @@
+# Define the list of filenames as a single line of text
+$fileNamesText = @"
+AL_PC_CO_Mike_LI_047_20230815_.jpg AL_PC_CO_Mike_LI_048_20240316_.psd AL_PC_CO_Mike_LI_049_20230815_.jpg AL_PC_CO_Mike_LI_050_20230815_.jpg AL_PC_CO_Mike_LI_051_20230816_.jpg AL_PC_CO_Mike_LI_052_20240316_.psd AL_PC_CO_Mike_LI_053_20240316_.psd AL_PC_CO_Mike_LI_054_20240316_.psd AL_PC_CO_Mike_LI_055_20240316_.psd AL_PC_CO_Mike_LI_056_20240316_.psd AL_PC_CO_Mike_LI_057_20240722_.png AL_PC_CO_Mike_LI_058_20240902_.jpg AL_PC_CO_Mike_LI_059_20240722_.png AL_PC_CO_Mike_LI_060_20240722_.png AL_PC_CO_Mike_LI_061_20240722_.png AL_PC_CO_Mike_LI_062_20240902_.jpg AL_PC_CO_Mike_LI_063_20240902_.jpg AL_PC_CO_Mike_LI_064_20240902_.jpg AL_PC_CO_Mike_LI_065_20240902_.jpg AL_PC_CO_Mike_LI_066_20240902_.jpg AL_PC_CO_Mike_LI_067_20240902_.jpg AL_PC_CO_Mike_LI_068_20240902_.jpg AL_PC_CO_Mike_LI_069_20240902_.jpg AL_PC_CO_Mike_LI_070_20240902_.jpg AL_PC_CO_Mike_LI_071_20240724_.jpg AL_PC_CO_Mike_LI_0721_20240902_.jpg AL_PC_CO_Mike_LI_072_20240724_.jpg AL_PC_CO_Mike_LI_073_20240902_.jpg AL_PC_CO_Mike_LI_074_20240902_.jpg AL_PC_CO_Mike_LI_075_20240902_.jpg AL_PC_CO_Mike_LI_076_20240902_.jpg AL_PC_CO_Mike_LI_078_20240902_.jpg AL_PC_CO_Mike_LI_079_20240902_.jpg
+"@
+
+# Split the filenames into an array
+$fileNames = $fileNamesText -split ' '
+
+# Define the prefix and suffix
+$prefix = "[[file://c:/s/ipad/AL/AL_PC/AL_PC_CH_MIKE_LI/"
+$suffix = "]]"
+
+# Create the formatted list
+$formattedList = $fileNames | ForEach-Object { "$prefix$_$suffix" }
+
+# Join the formatted list into a single string with newline characters
+$formattedListString = $formattedList -join "`n"
+
+# Copy the formatted list to the clipboard
+$formattedListString | Set-Clipboard
