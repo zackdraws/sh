@@ -1,0 +1,51 @@
+#!/bin/bash
+
+
+
+# Ask for the directory
+
+read -rp "Enter the path to the directory: " dir
+
+
+
+# Check if the directory exists
+
+if [[ ! -d "$dir" ]]; then
+
+    echo "Directory does not exist."
+
+    exit 1
+
+fi
+
+
+
+# Ask for the word to remove
+
+read -rp "Enter the word to remove from filenames: " word
+
+
+
+# Loop through all files in the directory
+
+for file in "$dir"/*; do
+
+    # Only rename if the file name contains the word
+
+    filename=$(basename "$file")
+
+    if [[ "$filename" == *"$word"* ]]; then
+
+        newname="${filename//$word/}"
+
+        mv -i "$file" "$dir/$newname"
+
+        echo "Renamed: $filename -> $newname"
+
+    fi
+
+done
+
+
+
+echo "Done."
